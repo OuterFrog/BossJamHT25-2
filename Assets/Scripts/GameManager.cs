@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager singleton;
+
     GameObject playerObject;
     GameObject topDownCamera;
 
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        singleton = this;
+
         if(playerObject == null)
         {
             playerObject = FindFirstObjectByType<TopDownPlayer>().gameObject;
@@ -35,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         GameObject oldPlayer = playerObject;
         playerObject = Instantiate(fpPlayerPrefab);
-        fpPlayerPrefab.transform.position = oldPlayer.transform.position + new Vector3(0, 10, 0);
+        fpPlayerPrefab.transform.position = oldPlayer.transform.position;
         
         Destroy(oldPlayer);
         Destroy(topDownCamera);
