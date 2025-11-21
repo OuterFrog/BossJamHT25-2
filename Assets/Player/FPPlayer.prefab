@@ -303,12 +303,11 @@ MonoBehaviour:
   cam: {fileID: 9190995663837489719}
   defaultCamPosition: {x: 0, y: 0, z: 0}
   camDashStartPosition: {x: 0, y: 0, z: 0}
-  attackPower: 0
-  attackChargeTimeMax: 0
-  cameraChargeFlybackTime: 0
+  chargePower: 200
+  attackChargeTimeMax: 2
+  cameraChargeFlybackTime: 2
   currentCameraChargeFlybackTime: 0
-  cameraChargeMove: 0
-  cameraReleaseMove: 0
+  cameraChargeMove: 5
   inDash: 0
   charging: 0
   flyForward: 0

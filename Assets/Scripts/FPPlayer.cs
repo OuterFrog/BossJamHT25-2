@@ -14,14 +14,14 @@ public class FPPlayer : MonoBehaviour
     float leftClickValue;
     public Vector3 defaultCamPosition;
     public Vector3 camDashStartPosition;
+    Vector3 chargeDirection;
 
-    public float attackPower;
+    public float chargePower;
     public float attackChargeTimeMax;
     float currentAttackChargeTime;
     public float cameraChargeFlybackTime;
     public float currentCameraChargeFlybackTime;
     public float cameraChargeMove;
-    public float cameraReleaseMove;
     public bool inDash;
     public bool charging;
     public bool flyForward;
@@ -53,11 +53,13 @@ public class FPPlayer : MonoBehaviour
         leftClickValue = leftClick.action.ReadValue<float>();
 
         if (!charging) CameraMovement();
+        Charge();
     }
 
     private void FixedUpdate()
     {
         Movement();
+        FlyForward();
     }
 
     void Charge()
@@ -67,8 +69,13 @@ public class FPPlayer : MonoBehaviour
             charging = true;
             currentAttackChargeTime += Time.deltaTime;
             cam.transform.position -= cam.transform.forward.normalized * cameraChargeMove * Time.deltaTime;
+            camDashStartPosition = cam.transform.position;
+            defaultCamPosition = transform.position + new Vector3(0, 1.5f, 0.5f);
+            chargeDirection = cam.transform.forward;
+            chargeDirection.y = 0;
+            chargeDirection = chargeDirection.normalized;
 
-            if(currentAttackChargeTime >= attackChargeTimeMax)
+            if (currentAttackChargeTime >= attackChargeTimeMax)
             {
                 inDash = true;
             }
@@ -78,6 +85,7 @@ public class FPPlayer : MonoBehaviour
         else if(currentAttackChargeTime > 0)
         {
             charging = false;
+            inDash = true;
 
             currentCameraChargeFlybackTime += Time.deltaTime;
             float cameraReturnCheck = currentCameraChargeFlybackTime / cameraChargeFlybackTime;
@@ -86,9 +94,6 @@ public class FPPlayer : MonoBehaviour
             if(cameraReturnCheck >= 1)
             {
                 flyForward = true;
-                currentCameraChargeFlybackTime = 0;
-                currentAttackChargeTime = 0;
-                inDash = true;
             }
 
         }
@@ -111,5 +116,19 @@ public class FPPlayer : MonoBehaviour
 
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         transform.Rotate(Vector3.up * mouseVector.x);
+    }
+
+    void FlyForward()
+    {
+        if(flyForward)
+        {
+            rig.AddForce(chargeDirection * chargePower, ForceMode.Impulse);
+
+            flyForward = false;
+            charging = false;
+            inDash = false;
+            currentCameraChargeFlybackTime = 0;
+            currentAttackChargeTime = 0;
+        }
     }
 }
