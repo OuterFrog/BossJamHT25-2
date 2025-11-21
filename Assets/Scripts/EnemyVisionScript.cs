@@ -4,7 +4,7 @@ public class EnemyVisionScript : MonoBehaviour
 {
 
 
-    public GameManager GameManager;
+    GameManager gameManager = null;
     public float viewAnagle;
     public float viewRange;
 
@@ -12,14 +12,18 @@ public class EnemyVisionScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameManager gameManager = GameObject.FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.GetPlayerObj() != null) {
-            lookFor(GameManager.GetPlayerObj());
+        if (gameManager == null)
+        {
+            Debug.Log("no gamemanager ref found");
+        }
+        if (gameManager.GetPlayerObj() != null) {
+            lookFor(gameManager.GetPlayerObj());
         }
         else Debug.Log("no playerref");
     }
