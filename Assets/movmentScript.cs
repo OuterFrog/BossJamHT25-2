@@ -13,8 +13,13 @@ public class movmentScript : MonoBehaviour
     public float setMaxXAxis;
     public float setMaxZAxis;
 
+    public float setMinXAxis;
+    public float setMinZAxis;
+
     float maxXAxis;
     float maxZAxis;
+    float minXAxis;
+    float minZAxis;
     float gotToX;
     float gotToZ;
     public Transform enemy;
@@ -27,6 +32,9 @@ public class movmentScript : MonoBehaviour
 
         maxXAxis = setMaxXAxis;
         maxZAxis = setMaxZAxis;
+
+        minXAxis = setMaxXAxis;
+        minZAxis = setMaxZAxis;
 
         gotToX = enemy.transform.position.x;
         gotToZ = enemy.transform.position.z;

@@ -92,8 +92,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7213347300419581494}
   playArea: {fileID: 0}
-  setMaxXAxis: 70
-  setMaxZAxis: 70
+  setMaxXAxis: 35
+  setMaxZAxis: 35
+  setMinXAxis: 35
+  setMinZAxis: 35
   enemy: {fileID: 4317629663735661256}
 --- !u!1 &6331398579339181406
 GameObject:
