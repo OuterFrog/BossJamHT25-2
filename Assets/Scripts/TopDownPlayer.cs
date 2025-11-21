@@ -31,4 +31,12 @@ public class TopDownPlayer : MonoBehaviour
         Vector3 dirVector = new Vector3(inputVector.x, 0, inputVector.y);
         rb.linearVelocity = speed * dirVector * Time.fixedDeltaTime;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Pickup")
+        {
+            Debug.Log("Picked up shit");
+        }
+    }
 }

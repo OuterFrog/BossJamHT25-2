@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInput: {fileID: 6485160813341195449, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
-  speed: 279
+  speed: 301
 --- !u!23 &8629978510798871898
 MeshRenderer:
   m_ObjectHideFlags: 0
