@@ -21,9 +21,9 @@ public class TopDownCamera : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         Vector3 targetPos = new Vector3(target.position.x, 0, target.position.z) + offset;
-        transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.fixedDeltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
     }
 }
