@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437ae0b7f8470e74fb69f9de305039d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
+  viewAnagle: 0.5
+  viewRange: 50
 --- !u!1 &6331398579339181406
 GameObject:
   m_ObjectHideFlags: 0
