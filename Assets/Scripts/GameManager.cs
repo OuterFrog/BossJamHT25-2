@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject playerObject;
+    GameObject playerObject;
+
+    public GameObject GetPlayerObj()
+    {
+        return playerObject;
+    }
 
     void Awake()
     {
