@@ -4,26 +4,26 @@ public class EnemyVisionScript : MonoBehaviour
 {
 
 
-    GameManager gameManager = null;
-    public float viewAnagle;
+    
+    public float viewAnagleFOV;
     public float viewRange;
-
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameManager gameManager = GameObject.FindFirstObjectByType<GameManager>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager == null)
+        if (GameManager.singleton == null)
         {
             Debug.Log("no gamemanager ref found");
         }
-        if (gameManager.GetPlayerObj() != null) {
-            lookFor(gameManager.GetPlayerObj());
+        if (GameManager.singleton.GetPlayerObj() != null) {
+            lookFor(GameManager.singleton.GetPlayerObj());
         }
         else Debug.Log("no playerref");
     }
@@ -39,7 +39,7 @@ public class EnemyVisionScript : MonoBehaviour
 
         if(Physics.Raycast(transform.position, direction, out hit, viewRange))
         {
-            if (Vector3.Dot(direction, transform.forward) < viewRange || Vector3.Dot(direction, transform.forward) > -1 * viewRange) {
+            if (Vector3.Dot(direction, transform.forward) < viewAnagleFOV / 180 || Vector3.Dot(direction, transform.forward) > -1 * viewAnagleFOV / 180) {
 
                 Debug.Log("i can see you");
 
