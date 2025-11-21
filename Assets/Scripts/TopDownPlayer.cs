@@ -37,6 +37,7 @@ public class TopDownPlayer : MonoBehaviour
         if(other.tag == "Pickup")
         {
             Debug.Log("Picked up shit");
+            FindFirstObjectByType<GameManager>().KillingMode();
         }
     }
 }
