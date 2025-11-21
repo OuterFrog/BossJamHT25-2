@@ -36,7 +36,8 @@ public class TopDownPlayer : MonoBehaviour
     {
         if(other.tag == "Pickup")
         {
-            Debug.Log("Picked up shit");
+            Debug.Log("Picked up");
+            other.transform.parent.gameObject.GetComponent<PickUpScript>().PickedUp();
             FindFirstObjectByType<GameManager>().KillingMode();
         }
     }
