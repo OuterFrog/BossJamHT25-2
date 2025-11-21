@@ -16,6 +16,8 @@ public class movmentScript : MonoBehaviour
     public float setMinXAxis;
     public float setMinZAxis;
 
+    public float closeEnoughTolerance;
+
     float maxXAxis;
     float maxZAxis;
     float minXAxis;
@@ -47,7 +49,7 @@ public class movmentScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((enemy.transform.position.x - gotToX) < 1 && (enemy.transform.position.x - gotToX) > -1 && (enemy.transform.position.z - gotToZ) < 1 && (enemy.transform.position.z - gotToZ) > -1)
+        if ((enemy.transform.position.x - gotToX) < closeEnoughTolerance && (enemy.transform.position.x - gotToX) > -closeEnoughTolerance && (enemy.transform.position.z - gotToZ) < closeEnoughTolerance && (enemy.transform.position.z - gotToZ) > -closeEnoughTolerance)
         {
 
             gotToX = Random.Range(-maxXAxis, maxXAxis);

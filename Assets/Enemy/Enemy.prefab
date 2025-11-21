@@ -97,6 +97,7 @@ MonoBehaviour:
   setMaxZAxis: 10
   setMinXAxis: 10
   setMinZAxis: 10
+  closeEnoughTolerance: 3
   enemy: {fileID: 4317629663735661256}
 --- !u!114 &4294247180830848825
 MonoBehaviour:
@@ -110,8 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437ae0b7f8470e74fb69f9de305039d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 0}
-  viewAnagle: 0.5
+  viewAnagleFOV: 0
   viewRange: 50
 --- !u!1 &6331398579339181406
 GameObject:
