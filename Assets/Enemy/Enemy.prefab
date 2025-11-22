@@ -157,9 +157,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 6
   avoidancePriority: 50
-  m_AngularSpeed: 60
+  m_AngularSpeed: 90
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -379,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fbb8c2b48b6c71439d9fbb5da67d612, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.13
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fbb8c2b48b6c71439d9fbb5da67d612, type: 3}
       propertyPath: m_LocalPosition.z
@@ -668,7 +668,7 @@ PrefabInstance:
     - target: {fileID: 2664098864995057252, guid: 9fbb8c2b48b6c71439d9fbb5da67d612, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 775a7e0f4d6ea47309aaebf4fd1005d6, type: 2}
+      objectReference: {fileID: 2100000, guid: 88447354aa5c65a46a10b65916cc0912, type: 2}
     - target: {fileID: 3855777992326034932, guid: 9fbb8c2b48b6c71439d9fbb5da67d612, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 1.3009243

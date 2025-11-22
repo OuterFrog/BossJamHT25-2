@@ -213,13 +213,5 @@ public class EnemyVisionScript : MonoBehaviour
         {
             return new ViewCastInfo(false, rayCastOrigin.position + dir *  viewRange,viewRange, globalAngle);
         }
-    }
-
-
-    public void kill()
-    {
-        GameManager.singleton.EnemyIsKilled();
-       Destroy(gameObject);
-    }
-    
+    }    
  }

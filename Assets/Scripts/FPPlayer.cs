@@ -161,7 +161,7 @@ public class FPPlayer : MonoBehaviour
 
         if(other.gameObject.layer == 7)
         {
-            other.GetComponent<EnemyVisionScript>().kill();
+            other.GetComponent<movmentScript>().kill();
         }
     }
 }

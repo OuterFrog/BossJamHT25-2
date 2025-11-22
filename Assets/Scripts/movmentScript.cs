@@ -71,4 +71,20 @@ public class movmentScript : MonoBehaviour
         result = Vector3.zero;
         return false;
     }
+
+
+    public void kill()
+    {
+        GameManager.singleton.EnemyIsKilled();
+        anim.SetTrigger("dead");
+        GetComponent<BoxCollider>().enabled = false;
+
+        Invoke(nameof(DestroyEnemy), 2);
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
+
 }
