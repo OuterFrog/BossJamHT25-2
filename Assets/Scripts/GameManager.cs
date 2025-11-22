@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] float startTime;
     float timeLeft;
 
+    [SerializeField] int enemyCount;
+    int enemiesLeft;
+
     public GameObject GetPlayerObj()
     {
         return playerObject;
@@ -38,12 +41,12 @@ public class GameManager : MonoBehaviour
     {
         singleton = this;
 
-        if(playerObject == null)
+        if(playerObject)
         {
             playerObject = FindFirstObjectByType<TopDownPlayer>().gameObject;
         }
 
-        if(topDownCamera == null)
+        if(topDownCamera)
         {
             topDownCamera = FindFirstObjectByType<TopDownCamera>().gameObject;
         }
@@ -51,8 +54,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        enemiesLeft = enemyCount;
+
         if(timerText)
             timerText.enabled = false;   
+
     }
 
     public void KillingMode()
@@ -87,6 +93,13 @@ public class GameManager : MonoBehaviour
     public void EnemyIsKilled()
     {
         Debug.Log("One less enemy, epic!");
+
+        enemyCount--;
+
+        if(enemyCount <= 0)
+        {
+            Debug.Log("You win!");
+        }
     }
 
     void StartTimer()
