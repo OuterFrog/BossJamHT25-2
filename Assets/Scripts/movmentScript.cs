@@ -35,8 +35,8 @@ public class movmentScript : MonoBehaviour
         maxXAxis = setMaxXAxis;
         maxZAxis = setMaxZAxis;
 
-        minXAxis = setMaxXAxis;
-        minZAxis = setMaxZAxis;
+        minXAxis = setMinXAxis;
+        minZAxis = setMinZAxis;
 
         gotToX = enemy.transform.position.x;
         gotToZ = enemy.transform.position.z;
