@@ -204,7 +204,7 @@ public class EnemyVisionScript : MonoBehaviour
 
     public void kill()
     {
-
+        GameManager.singleton.EnemyIsKilled();
        Destroy(gameObject);
     }
     
