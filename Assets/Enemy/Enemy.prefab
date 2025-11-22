@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7213347300419581494}
   playArea: {fileID: 0}
+  UseStartPosAsPatrolArea: 1
   patrolArea: {x: 0, y: 0, z: 0}
   patrolRange: 0
   closeEnoughTolerance: 1

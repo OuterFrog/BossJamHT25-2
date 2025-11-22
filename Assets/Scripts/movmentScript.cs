@@ -9,7 +9,7 @@ public class movmentScript : MonoBehaviour
 
     public NavMeshAgent agent;
     public Transform playArea;
-
+    public bool UseStartPosAsPatrolArea;
     public Vector3 patrolArea;
     public float patrolRange;
 
@@ -23,6 +23,11 @@ public class movmentScript : MonoBehaviour
     {
 
         moveTo = transform.position;
+
+        if (UseStartPosAsPatrolArea)
+        {
+            patrolArea = moveTo;
+        }
 
     }
 
