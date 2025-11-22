@@ -369,6 +369,7 @@ MonoBehaviour:
   camDefaultFOV: 80
   camMAXFOV: 110
   attackCollider: {fileID: 4651523108162644290}
+  playerColider: {fileID: 5743844240975670013}
 --- !u!54 &3127406634091972070
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -41,6 +41,8 @@ public class FPPlayer : MonoBehaviour
 
     public GameObject attackCollider;
 
+    public Collider playerColider;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -69,7 +71,7 @@ public class FPPlayer : MonoBehaviour
 
         CameraMovement();
         Charge();
-
+        Debug.Log(playerColider.excludeLayers.value);
         if(isZoomingBack)
         {
             zoomBackTimer.Tick(Time.deltaTime);
@@ -101,11 +103,13 @@ public class FPPlayer : MonoBehaviour
         {
             attackCollider.SetActive(true);
             dashTimer.Tick(Time.deltaTime);
+            playerColider.excludeLayers = LayerMask.GetMask("Enemy");
+
 
             if (dashTimer.timeIsUp)
             {
                 attackCollider.SetActive(false);
-
+                playerColider.excludeLayers = LayerMask.GetMask("Nothing");
                 currentWalkSpeed = walkSpeed;
                 isZoomingBack = true;
             }
