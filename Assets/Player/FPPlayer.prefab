@@ -307,12 +307,12 @@ MonoBehaviour:
   moveInput: {fileID: 6485160813341195449, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
   mouseInput: {fileID: 4501296380035403179, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
   leftClick: {fileID: 155363549396177350, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
-  maxChargeTime: 0
-  maxDashTime: 0
+  maxChargeTime: 2
+  maxDashTime: 2
   maxChargePower: 120
   isDashing: 0
-  camDefaultFOV: 0
-  camMAXFOV: 0
+  camDefaultFOV: 80
+  camMAXFOV: 120
 --- !u!54 &3127406634091972070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -322,8 +322,8 @@ Rigidbody:
   m_GameObject: {fileID: 7300486622955488327}
   serializedVersion: 4
   m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.01
+  m_Drag: 2
+  m_AngularDrag: 0.06
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
