@@ -82,6 +82,7 @@ public class movmentScript : MonoBehaviour
         GameManager.singleton.EnemyIsKilled();
         anim.SetTrigger("dead");
         GetComponent<BoxCollider>().enabled = false;
+        StopMoving();
 
         Invoke(nameof(DestroyEnemy), 2);
     }

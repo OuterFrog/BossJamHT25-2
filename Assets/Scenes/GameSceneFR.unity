@@ -2621,6 +2621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIStuff
       objectReference: {fileID: 0}
+    - target: {fileID: 7650310361384801386, guid: fac3db7ca6f3f573392a971f2f87f05a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5407,6 +5411,10 @@ PrefabInstance:
       propertyPath: fullGameLoop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 1794729761}
     - target: {fileID: 3293811276128894036, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -5637,6 +5645,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7973e250b21e2ea4197c27776a981059, type: 3}
+--- !u!114 &1794729761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7792259912094094127, guid: fac3db7ca6f3f573392a971f2f87f05a, type: 3}
+  m_PrefabInstance: {fileID: 792616767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1804044089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 497780421362181474, guid: 57b35db527ba3ba4185f7984cab482cc, type: 3}

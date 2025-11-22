@@ -35,6 +35,8 @@ public class TopDownPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        if(GameManager.singleton.dead) return;
+
         Vector2 inputVector = moveInput.action.ReadValue<Vector2>();
         if(inputVector.magnitude > 0)
         {
@@ -46,6 +48,12 @@ public class TopDownPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.singleton.dead)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
+
         Vector2 inputVector = moveInput.action.ReadValue<Vector2>();
         Vector3 dirVector = new Vector3(inputVector.x, 0, inputVector.y);
         rb.linearVelocity = speed * dirVector * Time.fixedDeltaTime;
@@ -68,5 +76,11 @@ public class TopDownPlayer : MonoBehaviour
             other.transform.parent.gameObject.GetComponent<PickUpScript>().PickedUp();
             FindFirstObjectByType<GameManager>().KillingMode();
         }
+    }
+
+    public void Die()
+    {
+        anim.SetBool("isWalking", false);
+        rb.linearVelocity = Vector3.zero;
     }
 }

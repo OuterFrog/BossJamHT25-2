@@ -61,6 +61,8 @@ public class FPPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.singleton.dead) return;
+
         walkVector = moveInput.action.ReadValue<Vector2>();
         mouseVector = mouseInput.action.ReadValue<Vector2>() * mouseSensitivity * Time.deltaTime;
         leftClickValue = leftClick.action.ReadValue<float>();
@@ -88,6 +90,8 @@ public class FPPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(GameManager.singleton.dead) return;
+
         if(!isDashing) Movement();
     }
 
@@ -163,5 +167,10 @@ public class FPPlayer : MonoBehaviour
         {
             other.GetComponent<movmentScript>().kill();
         }
+    }
+
+    public void Die()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
 }

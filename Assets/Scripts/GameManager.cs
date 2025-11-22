@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     float gameTimer = 0;
     float killModeTimer = 0;
 
-    bool dead = false;
+    public bool dead = false;
 
     [SerializeField] Button restartButton;
 
@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour
         if(timerText)
             timerText.enabled = false;
 
+        if(restartButton)
+            restartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
+
     }
 
     public void KillingMode()
@@ -109,7 +112,25 @@ public class GameManager : MonoBehaviour
 
         if (fullGameLoop)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restartButton.gameObject.SetActive(true);
+            if (playerObject.GetComponent<TopDownPlayer>())
+            {
+                playerObject.GetComponent<TopDownPlayer>().Die();
+            }
+            else if (playerObject.GetComponent<FPPlayer>())
+            {
+                playerObject.GetComponent<FPPlayer>().Die();
+            }
+
+
+            movmentScript[] enemies = FindObjectsByType<movmentScript>(FindObjectsSortMode.None);
+            foreach(movmentScript enemy in enemies)
+            {
+                enemy.StopMoving();
+            }
+            //Time.timeScale = 0;
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
