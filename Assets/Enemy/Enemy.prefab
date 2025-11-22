@@ -181,11 +181,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7213347300419581494}
   playArea: {fileID: 0}
-  setMaxXAxis: 10
-  setMaxZAxis: 10
-  setMinXAxis: -10
-  setMinZAxis: -10
-  closeEnoughTolerance: 3
+  UseStartPosAsPatrolArea: 1
+  patrolArea: {x: 0, y: 0, z: 0}
+  patrolRange: 0
+  closeEnoughTolerance: 1
   enemy: {fileID: 4317629663735661256}
 --- !u!114 &4294247180830848825
 MonoBehaviour:
