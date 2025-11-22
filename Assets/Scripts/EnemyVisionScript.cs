@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyVisionScript : MonoBehaviour
 {
 
-
+    public GameObject FOVVis;
     
     public float viewAnagleFOV;
     public float viewRange;
@@ -75,6 +75,7 @@ public class EnemyVisionScript : MonoBehaviour
 
 
         }
+        else if(FOVVis != null) {Destroy(FOVVis); }
 
 
     }

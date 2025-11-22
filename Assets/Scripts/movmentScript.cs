@@ -37,7 +37,7 @@ public class movmentScript : MonoBehaviour
         if ((enemy.transform.position.x - moveTo.x) < closeEnoughTolerance && (enemy.transform.position.x - moveTo.x) > -closeEnoughTolerance && (enemy.transform.position.z - moveTo.z) < closeEnoughTolerance && (enemy.transform.position.z - moveTo.z) > -closeEnoughTolerance)
         {
 
-
+           
             
 
             RandomPoint(patrolArea, patrolRange, out moveTo);
