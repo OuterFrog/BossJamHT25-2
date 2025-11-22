@@ -3,6 +3,7 @@ using TMPro;
 using System.Threading;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {  
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
 
     float gameTimer = 0;
     float killModeTimer = 0;
+
+    public bool dead = false;
+
+    [SerializeField] Button restartButton;
 
     // Top down stuff
     GameObject topDownCamera;
@@ -38,6 +43,11 @@ public class GameManager : MonoBehaviour
     
     bool hasWon = false;
 
+    [SerializeField] GameObject musicInThisScene;
+    static GameObject musicPlayer;
+
+    [SerializeField] bool spawnInFirstPerson = false;
+
     public GameObject GetPlayerObj()
     {
         return playerObject;
@@ -51,6 +61,16 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         singleton = this;
+
+        if (musicPlayer)
+        {
+            Destroy(musicInThisScene);
+        }
+        else
+        {
+            musicPlayer = musicInThisScene;
+            DontDestroyOnLoad(musicPlayer);
+        }
 
         if(!playerObject)
         {
@@ -72,6 +92,14 @@ public class GameManager : MonoBehaviour
         if(timerText)
             timerText.enabled = false;
 
+        if(restartButton)
+            restartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
+
+        if (spawnInFirstPerson)
+        {
+            FindFirstObjectByType<PickUpScript>().PickedUp();
+            Invoke(nameof(KillingMode), 1);
+        }
     }
 
     public void KillingMode()
@@ -96,11 +124,33 @@ public class GameManager : MonoBehaviour
 
     public void EnemyCanSeeYou()
     {
+        if(dead) return;
+
+        dead = true;
+
         Debug.Log("You are dead");
 
         if (fullGameLoop)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restartButton.gameObject.SetActive(true);
+            if (playerObject.GetComponent<TopDownPlayer>())
+            {
+                playerObject.GetComponent<TopDownPlayer>().Die();
+            }
+            else if (playerObject.GetComponent<FPPlayer>())
+            {
+                playerObject.GetComponent<FPPlayer>().Die();
+            }
+
+
+            movmentScript[] enemies = FindObjectsByType<movmentScript>(FindObjectsSortMode.None);
+            foreach(movmentScript enemy in enemies)
+            {
+                enemy.StopMoving();
+            }
+            //Time.timeScale = 0;
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -114,6 +164,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("You win!");
             hasWon = true;
+            SceneManager.LoadScene(1);
         }
     }
 

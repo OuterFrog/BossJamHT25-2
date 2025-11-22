@@ -18,6 +18,9 @@ public class movmentScript : MonoBehaviour
     Vector3 moveTo;
 
     public Transform enemy;
+
+    [SerializeField] Animator anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,15 +31,18 @@ public class movmentScript : MonoBehaviour
         {
             patrolArea = moveTo;
         }
+        
+        anim.Play("WalkBlend");
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("walkAmount", agent.velocity.magnitude / agent.speed);
+
         if ((enemy.transform.position.x - moveTo.x) < closeEnoughTolerance && (enemy.transform.position.x - moveTo.x) > -closeEnoughTolerance && (enemy.transform.position.z - moveTo.z) < closeEnoughTolerance && (enemy.transform.position.z - moveTo.z) > -closeEnoughTolerance)
         {
-
 
             
 
@@ -48,7 +54,10 @@ public class movmentScript : MonoBehaviour
     }
 
 
-
+    public void StopMoving()
+    {
+        agent.isStopped = true;
+    }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
@@ -65,4 +74,22 @@ public class movmentScript : MonoBehaviour
         result = Vector3.zero;
         return false;
     }
+
+
+    public void kill()
+    {
+        StopMoving();
+        GameManager.singleton.EnemyIsKilled();
+        anim.SetTrigger("dead");
+        GetComponent<BoxCollider>().enabled = false;
+        StopMoving();
+
+        Invoke(nameof(DestroyEnemy), 2);
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
+
 }

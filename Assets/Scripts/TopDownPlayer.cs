@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,11 @@ public class TopDownPlayer : MonoBehaviour
 
     Quaternion targetRot = Quaternion.Euler(0,0,0);
 
+    [SerializeField] Animator anim;
+    [SerializeField] Animation anim2;
+
+    float animWalkSpeed = 0;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,24 +29,36 @@ public class TopDownPlayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //anim2.Play("walkLoopAnim");
     }
 
     // Update is called once per frame
     void Update()
     {   
+        if(GameManager.singleton.dead) return;
+
         Vector2 inputVector = moveInput.action.ReadValue<Vector2>();
         if(inputVector.magnitude > 0)
         {
             visualTransform.rotation = Quaternion.Lerp(visualTransform.rotation, targetRot, rotSpeed * Time.deltaTime);
         }
+
+        anim.SetBool("isWalking", rb.linearVelocity.magnitude > 0);
     }
 
     void FixedUpdate()
     {
+        if (GameManager.singleton.dead)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
+
         Vector2 inputVector = moveInput.action.ReadValue<Vector2>();
         Vector3 dirVector = new Vector3(inputVector.x, 0, inputVector.y);
         rb.linearVelocity = speed * dirVector * Time.fixedDeltaTime;
+
+        animWalkSpeed = rb.linearVelocity.magnitude / (speed * Time.fixedDeltaTime);
 
         if(rb.linearVelocity.magnitude > 0)
         {
@@ -58,5 +76,11 @@ public class TopDownPlayer : MonoBehaviour
             other.transform.parent.gameObject.GetComponent<PickUpScript>().PickedUp();
             FindFirstObjectByType<GameManager>().KillingMode();
         }
+    }
+
+    public void Die()
+    {
+        anim.SetBool("isWalking", false);
+        rb.linearVelocity = Vector3.zero;
     }
 }

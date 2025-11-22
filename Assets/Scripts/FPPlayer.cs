@@ -41,6 +41,8 @@ public class FPPlayer : MonoBehaviour
 
     public GameObject attackCollider;
 
+    public Collider playerColider;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,13 +63,15 @@ public class FPPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.singleton.dead) return;
+
         walkVector = moveInput.action.ReadValue<Vector2>();
         mouseVector = mouseInput.action.ReadValue<Vector2>() * mouseSensitivity * Time.deltaTime;
         leftClickValue = leftClick.action.ReadValue<float>();
 
         CameraMovement();
         Charge();
-
+        Debug.Log(playerColider.excludeLayers.value);
         if(isZoomingBack)
         {
             zoomBackTimer.Tick(Time.deltaTime);
@@ -88,6 +92,8 @@ public class FPPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(GameManager.singleton.dead) return;
+
         if(!isDashing) Movement();
     }
 
@@ -97,11 +103,13 @@ public class FPPlayer : MonoBehaviour
         {
             attackCollider.SetActive(true);
             dashTimer.Tick(Time.deltaTime);
+            playerColider.excludeLayers = LayerMask.GetMask("Enemy");
+
 
             if (dashTimer.timeIsUp)
             {
                 attackCollider.SetActive(false);
-
+                playerColider.excludeLayers = LayerMask.GetMask("Nothing");
                 currentWalkSpeed = walkSpeed;
                 isZoomingBack = true;
             }
@@ -161,7 +169,12 @@ public class FPPlayer : MonoBehaviour
 
         if(other.gameObject.layer == 7)
         {
-            other.GetComponent<EnemyVisionScript>().kill();
+            other.GetComponent<movmentScript>().kill();
         }
+    }
+
+    public void Die()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
 }
