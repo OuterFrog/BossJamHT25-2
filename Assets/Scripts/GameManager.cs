@@ -3,6 +3,7 @@ using TMPro;
 using System.Threading;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {  
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
 
     float gameTimer = 0;
     float killModeTimer = 0;
+
+    bool dead = false;
+
+    [SerializeField] Button restartButton;
 
     // Top down stuff
     GameObject topDownCamera;
@@ -96,6 +101,10 @@ public class GameManager : MonoBehaviour
 
     public void EnemyCanSeeYou()
     {
+        if(dead) return;
+
+        dead = true;
+
         Debug.Log("You are dead");
 
         if (fullGameLoop)
