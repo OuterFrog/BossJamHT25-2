@@ -84,13 +84,13 @@ public class EnemyVisionScript : MonoBehaviour
             if (Vector3.Dot(direction.normalized, transform.forward.normalized) > viewAnagleFOV / 180)
             {
 
-                Debug.Log("i can see you");
-
+                //Debug.Log("i can see you");
+                GameManager.singleton.EnemyCanSeeYou();
             }
-            else { Debug.Log("Line of sight"); }
+            //else { Debug.Log("Line of sight"); }
             
         }
-        else { Debug.Log("i can t see you"); }
+        //else { Debug.Log("i can t see you"); }
     }
 
 
