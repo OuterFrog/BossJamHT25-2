@@ -10,6 +10,7 @@ public class EnemyVisionScript : MonoBehaviour
     public float viewAnagleFOV;
     public float viewRange;
     public float meshResolution;
+    public Transform rayCastOrigin;
 
     public int edgeResolveIterations;
     public float edgeDstThreshold;
@@ -73,24 +74,25 @@ public class EnemyVisionScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        Vector3 direction = player.transform.position - transform.position;
+        Vector3 direction = player.transform.position - rayCastOrigin.position;
 
-        Debug.DrawRay(transform.position, direction, Color.red);
+        Debug.DrawLine(rayCastOrigin.position, direction, Color.red);
 
         //Debug.Log(Vector3.Dot(direction.normalized, transform.forward.normalized));
 
-        if (Vector3.Magnitude(direction) < viewRange && Physics.Raycast( transform.position, direction, out hit, viewRange))
+        if (Vector3.Magnitude(direction) < viewRange && Physics.Raycast(rayCastOrigin.position, direction, out hit, viewRange, LayerMask.GetMask("Player", "Default")) && hit.collider.gameObject != null && hit.collider.gameObject.layer == 6)
         {
             if (Vector3.Dot(direction.normalized, transform.forward.normalized) > viewAnagleFOV / 180)
             {
 
-                //Debug.Log("i can see you");
+                
                 GameManager.singleton.EnemyCanSeeYou();
             }
             //else { Debug.Log("Line of sight"); }
             
         }
-        //else { Debug.Log("i can t see you"); }
+        //else { Physics.Raycast(rayCastOrigin.position, direction, out hit, viewRange, LayerMask.GetMask("Player", "Default")); }
+        //Debug.Log(hit.collider.gameObject.layer);
     }
 
 

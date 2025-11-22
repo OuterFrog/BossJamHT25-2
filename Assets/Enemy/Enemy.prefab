@@ -121,6 +121,7 @@ Transform:
   m_Children:
   - {fileID: 1516613199958222528}
   - {fileID: 4403911507393320191}
+  - {fileID: 3671003794613626265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1521745894397469387
@@ -201,6 +202,7 @@ MonoBehaviour:
   viewAnagleFOV: 90
   viewRange: 10
   meshResolution: 50
+  rayCastOrigin: {fileID: 3671003794613626265}
   edgeResolveIterations: 10
   edgeDstThreshold: 50
   viewMeshFilter: {fileID: 3802264107368582948}
@@ -314,3 +316,34 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &6466725347174411440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3671003794613626265}
+  m_Layer: 0
+  m_Name: RayCastOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3671003794613626265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466725347174411440}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.051576138, y: 0.7433772, z: -0.033357143}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4317629663735661256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
