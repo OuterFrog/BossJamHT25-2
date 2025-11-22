@@ -57,14 +57,21 @@ public class FPPlayer : MonoBehaviour
         leftClickValue = leftClick.action.ReadValue<float>();
 
         CameraMovement();
+        Charge();
+    }
 
-        if(leftClickValue > 0.01f && !isDashing) Charge();
+    private void FixedUpdate()
+    {
+        if(!isDashing) Movement();
+    }
 
-        if(isDashing)
+    void Charge()
+    {
+        if (isDashing)
         {
             dashTimer.Tick(Time.deltaTime);
 
-            if(dashTimer.timeIsUp)
+            if (dashTimer.timeIsUp)
             {
                 isDashing = false;
                 chargeTimer.Reset();
@@ -72,26 +79,23 @@ public class FPPlayer : MonoBehaviour
 
                 cam.fieldOfView = camDefaultFOV;
             }
+
+            return;
         }
-    }
 
-    private void FixedUpdate()
-    {
-        //Movement();
-    }
+        if (leftClickValue > 0.01f)
+        {
+            chargeTimer.Tick(Time.deltaTime);
 
-    void Charge()
-    {
-        chargeTimer.Tick(Time.deltaTime);
+            chargeDirection = cam.transform.forward;
+            chargeDirection.y = 0;
+            chargeDirection.Normalize();
 
-        chargeDirection = cam.transform.forward;
-        chargeDirection.y = 0;
-        chargeDirection.Normalize();
+            cam.fieldOfView = Mathf.Lerp(camDefaultFOV, camMAXFOV, 1 - chargeTimer.currentTime / chargeTimer.maxTime);
+            currentChargePower = Mathf.Lerp(0, maxChargePower, 1 - chargeTimer.currentTime / chargeTimer.maxTime);
+        }
 
-        cam.fieldOfView = Mathf.Lerp(camDefaultFOV, camMAXFOV, 1 - chargeTimer.currentTime / chargeTimer.maxTime);
-        currentChargePower = Mathf.Lerp(0, maxChargePower, 1 - chargeTimer.currentTime / chargeTimer.maxTime);
-
-        if ((chargeTimer.timeIsUp || leftClickValue < 0.01f) && !isDashing)
+        else if (chargeTimer.currentTime < chargeTimer.maxTime)
         {
             isDashing = true;
             FlyForward();
