@@ -363,6 +363,7 @@ MonoBehaviour:
   leftClick: {fileID: 155363549396177350, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
   maxChargeTime: 2
   maxDashTime: 2
+  zoomBackTime: 0.4
   maxChargePower: 120
   isDashing: 0
   camDefaultFOV: 80

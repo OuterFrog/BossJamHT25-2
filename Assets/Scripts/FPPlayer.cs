@@ -25,8 +25,11 @@ public class FPPlayer : MonoBehaviour
 
     public float maxChargeTime;
     public float maxDashTime;
+    public float zoomBackTime;
     ClockTimer chargeTimer;
     ClockTimer dashTimer;
+    ClockTimer zoomBackTimer;
+    bool isZoomingBack;
 
     float currentChargePower;
     public float maxChargePower;
@@ -49,8 +52,10 @@ public class FPPlayer : MonoBehaviour
 
         chargeTimer = new ClockTimer(maxChargeTime);
         dashTimer = new ClockTimer(maxDashTime);
+        zoomBackTimer = new ClockTimer(zoomBackTime);
 
         attackCollider.SetActive(false);
+        isZoomingBack = false;
     }
 
     // Update is called once per frame
@@ -62,6 +67,23 @@ public class FPPlayer : MonoBehaviour
 
         CameraMovement();
         Charge();
+
+        if(isZoomingBack)
+        {
+            zoomBackTimer.Tick(Time.deltaTime);
+            cam.fieldOfView = Mathf.Lerp(camMAXFOV, camDefaultFOV, 1 - zoomBackTimer.currentTime / zoomBackTimer.maxTime);
+
+            if (zoomBackTimer.timeIsUp)
+            {
+                isZoomingBack = false;
+                isDashing = false;
+                chargeTimer.Reset();
+                dashTimer.Reset();
+                zoomBackTimer.Reset();
+
+                cam.fieldOfView = camDefaultFOV;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -81,11 +103,7 @@ public class FPPlayer : MonoBehaviour
                 attackCollider.SetActive(false);
 
                 currentWalkSpeed = walkSpeed;
-                isDashing = false;
-                chargeTimer.Reset();
-                dashTimer.Reset();
-
-                cam.fieldOfView = camDefaultFOV;
+                isZoomingBack = true;
             }
 
             return;
