@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject musicInThisScene;
     static GameObject musicPlayer;
 
+    [SerializeField] bool spawnInFirstPerson = false;
+
     public GameObject GetPlayerObj()
     {
         return playerObject;
@@ -93,6 +95,11 @@ public class GameManager : MonoBehaviour
         if(restartButton)
             restartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
 
+        if (spawnInFirstPerson)
+        {
+            FindFirstObjectByType<PickUpScript>().PickedUp();
+            Invoke(nameof(KillingMode), 1);
+        }
     }
 
     public void KillingMode()
