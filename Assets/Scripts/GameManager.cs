@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("You win!");
             hasWon = true;
+            SceneManager.LoadScene(1);
         }
     }
 
