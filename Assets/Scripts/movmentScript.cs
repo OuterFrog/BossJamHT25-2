@@ -10,55 +10,54 @@ public class movmentScript : MonoBehaviour
     public NavMeshAgent agent;
     public Transform playArea;
 
-    public float setMaxXAxis;
-    public float setMaxZAxis;
-
-    public float setMinXAxis;
-    public float setMinZAxis;
+    public Vector3 patrolArea;
+    public float patrolRange;
 
     public float closeEnoughTolerance;
 
-    float maxXAxis;
-    float maxZAxis;
-    float minXAxis;
-    float minZAxis;
-    float gotToX;
-    float gotToZ;
+    Vector3 moveTo;
+
     public Transform enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
-        //maxXAxis = playArea.localScale.x / 2;
-        //maxZAxis = playArea.localScale.z / 2;
-
-        maxXAxis = setMaxXAxis;
-        maxZAxis = setMaxZAxis;
-
-        minXAxis = setMinXAxis;
-        minZAxis = setMinZAxis;
-
-        gotToX = enemy.transform.position.x;
-        gotToZ = enemy.transform.position.z;
-
-        enemy.transform.position = new Vector3(gotToX, enemy.position.z, gotToZ);
-
+        moveTo = transform.position;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((enemy.transform.position.x - gotToX) < closeEnoughTolerance && (enemy.transform.position.x - gotToX) > -closeEnoughTolerance && (enemy.transform.position.z - gotToZ) < closeEnoughTolerance && (enemy.transform.position.z - gotToZ) > -closeEnoughTolerance)
+        if ((enemy.transform.position.x - moveTo.x) < closeEnoughTolerance && (enemy.transform.position.x - moveTo.x) > -closeEnoughTolerance && (enemy.transform.position.z - moveTo.z) < closeEnoughTolerance && (enemy.transform.position.z - moveTo.z) > -closeEnoughTolerance)
         {
 
-            gotToX = Random.Range(minXAxis, maxXAxis);
-            gotToZ = Random.Range(minZAxis, maxZAxis);
-            Vector3 moveTo = new Vector3(gotToX, enemy.position.y, gotToZ);
 
+            
+
+            RandomPoint(patrolArea, patrolRange, out moveTo);
 
             agent.SetDestination(moveTo);
 
         }
+    }
+
+
+
+
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            Vector3 randomPoint = center + Random.insideUnitSphere * range;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+        }
+        result = Vector3.zero;
+        return false;
     }
 }
