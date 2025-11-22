@@ -52,8 +52,8 @@ public class movmentScript : MonoBehaviour
         if ((enemy.transform.position.x - gotToX) < closeEnoughTolerance && (enemy.transform.position.x - gotToX) > -closeEnoughTolerance && (enemy.transform.position.z - gotToZ) < closeEnoughTolerance && (enemy.transform.position.z - gotToZ) > -closeEnoughTolerance)
         {
 
-            gotToX = Random.Range(-maxXAxis, maxXAxis);
-            gotToZ = Random.Range(-maxZAxis, maxZAxis);
+            gotToX = Random.Range(minXAxis, maxXAxis);
+            gotToZ = Random.Range(minZAxis, maxZAxis);
             Vector3 moveTo = new Vector3(gotToX, enemy.position.y, gotToZ);
 
 

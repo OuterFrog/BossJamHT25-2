@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 821abae5bd89b7f46888c00b50e6c328, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -199,9 +199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewAnagleFOV: 90
-  viewRange: 50
-  meshResolution: 300
-  edgeResolveIterations: 50
+  viewRange: 10
+  meshResolution: 50
+  edgeResolveIterations: 10
   edgeDstThreshold: 50
   viewMeshFilter: {fileID: 3802264107368582948}
 --- !u!1 &6331398579339181406
