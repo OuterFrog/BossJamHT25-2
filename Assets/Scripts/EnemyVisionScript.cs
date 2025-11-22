@@ -88,11 +88,12 @@ public class EnemyVisionScript : MonoBehaviour
 
         Debug.DrawLine(rayCastOrigin.position, direction, Color.red);
 
-        //Debug.Log(Vector3.Dot(direction.normalized, transform.forward.normalized));
+        //Debug.Log(Vector2.Dot(new Vector2(direction.normalized.x, direction.normalized.z), new Vector2(rayCastOrigin.forward.x, rayCastOrigin.forward.z)));
+        //Debug.Log(transform.eulerAngles.y - viewAnagleFOV / 2);
 
-        if (Vector3.Magnitude(direction) < viewRange && Physics.Raycast(rayCastOrigin.position, direction, out hit, viewRange, LayerMask.GetMask("Player", "Default")) && hit.collider.gameObject != null && hit.collider.gameObject.layer == 6)
+        if (Vector3.Magnitude(new Vector3(direction.x, 0, direction.z)) < viewRange && Physics.Raycast(rayCastOrigin.position, direction, out hit, viewRange, LayerMask.GetMask("Player", "Default")) && hit.collider.gameObject != null && hit.collider.gameObject.layer == 6)
         {
-            if (Vector3.Dot(direction.normalized, transform.forward.normalized) > viewAnagleFOV / 180)
+            if (Vector2.Dot(new Vector2(direction.normalized.x, direction.normalized.z), new Vector2(rayCastOrigin.forward.x, rayCastOrigin.forward.z)) > Mathf.Cos((viewAnagleFOV / 2) * Mathf.Deg2Rad))
             {
 
                 
@@ -114,7 +115,7 @@ public class EnemyVisionScript : MonoBehaviour
         ViewCastInfo oldViewCast = new ViewCastInfo();
         for (int i = 0; i <= stepCount; i++)
         {
-            float angle = transform.eulerAngles.y - viewAnagleFOV / 2 + stepAngleSize * i;
+            float angle = rayCastOrigin.eulerAngles.y - viewAnagleFOV  / 2 + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(angle);
 
             if (i > 0)
@@ -147,7 +148,7 @@ public class EnemyVisionScript : MonoBehaviour
         vertices[0] = Vector3.zero;
         for (int i = 0; i < vertexCount - 1; i++)
         {
-            vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]);
+            vertices[i + 1] = rayCastOrigin.InverseTransformPoint(viewPoints[i]);
 
             if (i < vertexCount - 2)
             {
@@ -203,13 +204,13 @@ public class EnemyVisionScript : MonoBehaviour
         Vector3 dir = dirFromAngle(globalAngle);
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, dir, out hit, viewRange))
+        if(Physics.Raycast(rayCastOrigin.position, dir, out hit, viewRange))
         {
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }
         else
         {
-            return new ViewCastInfo(false, transform.position + dir *  viewRange,viewRange, globalAngle);
+            return new ViewCastInfo(false, rayCastOrigin.position + dir *  viewRange,viewRange, globalAngle);
         }
     }
 
