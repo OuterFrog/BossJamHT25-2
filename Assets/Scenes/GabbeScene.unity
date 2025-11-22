@@ -604,12 +604,16 @@ PrefabInstance:
       value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 4597301428235799956, guid: 862a1376aaa6f2d4b903a815f08e9018, type: 3}
+      propertyPath: walkSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597301428235799956, guid: 862a1376aaa6f2d4b903a815f08e9018, type: 3}
       propertyPath: chargePower
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4597301428235799956, guid: 862a1376aaa6f2d4b903a815f08e9018, type: 3}
       propertyPath: maxDashTime
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4597301428235799956, guid: 862a1376aaa6f2d4b903a815f08e9018, type: 3}
       propertyPath: camDefaultFOV
@@ -617,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4597301428235799956, guid: 862a1376aaa6f2d4b903a815f08e9018, type: 3}
       propertyPath: maxChargeTime
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7300486622955488327, guid: 862a1376aaa6f2d4b903a815f08e9018, type: 3}
       propertyPath: m_Name

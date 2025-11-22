@@ -36,6 +36,8 @@ public class FPPlayer : MonoBehaviour
     public float camMAXFOV;
     float currentDefultFOV;
 
+    public GameObject attackCollider;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,6 +49,8 @@ public class FPPlayer : MonoBehaviour
 
         chargeTimer = new ClockTimer(maxChargeTime);
         dashTimer = new ClockTimer(maxDashTime);
+
+        attackCollider.SetActive(false);
     }
 
     // Update is called once per frame
@@ -69,10 +73,14 @@ public class FPPlayer : MonoBehaviour
     {
         if (isDashing)
         {
+            attackCollider.SetActive(true);
             dashTimer.Tick(Time.deltaTime);
 
             if (dashTimer.timeIsUp)
             {
+                attackCollider.SetActive(false);
+
+                currentWalkSpeed = walkSpeed;
                 isDashing = false;
                 chargeTimer.Reset();
                 dashTimer.Reset();
@@ -90,6 +98,8 @@ public class FPPlayer : MonoBehaviour
             chargeDirection = cam.transform.forward;
             chargeDirection.y = 0;
             chargeDirection.Normalize();
+
+            currentWalkSpeed = 0.4f * walkSpeed;
 
             cam.fieldOfView = Mathf.Lerp(camDefaultFOV, camMAXFOV, 1 - chargeTimer.currentTime / chargeTimer.maxTime);
             currentChargePower = Mathf.Lerp(0, maxChargePower, 1 - chargeTimer.currentTime / chargeTimer.maxTime);
@@ -125,5 +135,13 @@ public class FPPlayer : MonoBehaviour
     {
         rig.AddForce(chargeDirection * currentChargePower * 100);
         Debug.Log("ATTACKED!");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 7)
+        {
+            GetComponent<EnemyVisionScript>().kill();
+        }
     }
 }
