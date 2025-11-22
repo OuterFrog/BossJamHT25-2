@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc1ad65152e1f7df99d30c42aa8864b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiAnim: {fileID: 0}
   fpPlayerPrefab: {fileID: 7300486622955488327, guid: 862a1376aaa6f2d4b903a815f08e9018, type: 3}
+  timerText: {fileID: 0}
+  startTime: 10
 --- !u!114 &1907459241019016439
 MonoBehaviour:
   m_ObjectHideFlags: 0

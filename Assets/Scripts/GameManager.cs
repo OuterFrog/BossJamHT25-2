@@ -1,8 +1,13 @@
 using UnityEngine;
+using TMPro;
+using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager singleton;
+
+    [SerializeField] bool fullGameLoop = false;
 
     GameObject playerObject;
     GameObject topDownCamera;
@@ -11,11 +16,22 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject fpPlayerPrefab;
 
+    [SerializeField] TextMeshProUGUI timerText;
+
     bool killingMode = false;
+
+    bool timerOn;
+    [SerializeField] float startTime;
+    float timeLeft;
 
     public GameObject GetPlayerObj()
     {
         return playerObject;
+    }
+
+    public bool GetMode()
+    {
+        return killingMode;
     }
 
     void Awake()
@@ -33,6 +49,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if(timerText)
+            timerText.enabled = false;   
+    }
+
     public void KillingMode()
     {   
         if(killingMode) return;
@@ -45,6 +67,8 @@ public class GameManager : MonoBehaviour
 
         if(uiAnim)
             uiAnim.Play("lnaanim");
+
+        StartTimer();
         
         Destroy(oldPlayer);
         Destroy(topDownCamera);
@@ -53,10 +77,42 @@ public class GameManager : MonoBehaviour
     public void EnemyCanSeeYou()
     {
         Debug.Log("You are dead");
+
+        if (fullGameLoop)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void EnemyIsKilled()
     {
         Debug.Log("One less enemy, epic!");
+    }
+
+    void StartTimer()
+    {
+        if(!timerText)
+            return;
+
+        timerText.enabled = true;
+        timerOn = true;
+        timeLeft = startTime;
+    }
+
+    void Update()
+    {
+        if (timerOn)
+        {
+            timeLeft -= Time.deltaTime;
+            timeLeft = Mathf.Clamp(timeLeft, 0, startTime);
+
+            timerText.text = timeLeft.ToString("0.0");
+
+            if(timeLeft <= 0)
+            {
+                timerOn = false;
+                EnemyCanSeeYou();
+            }
+        }
     }
 }
