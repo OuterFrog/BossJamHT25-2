@@ -15,6 +15,7 @@ public class FPPlayer : MonoBehaviour
     public Vector3 defaultCamPosition;
     public Vector3 camDashStartPosition;
     Vector3 chargeDirection;
+    public Transform cameraHolder;
 
     public float chargePower;
     public float attackChargeTimeMax;
@@ -68,11 +69,10 @@ public class FPPlayer : MonoBehaviour
         {
             charging = true;
             currentAttackChargeTime += Time.deltaTime;
-            cam.transform.position -= cam.transform.forward.normalized * cameraChargeMove * Time.deltaTime;
+            cam.transform.position -= cameraHolder.transform.forward.normalized * cameraChargeMove * Time.deltaTime;
             camDashStartPosition = cam.transform.position;
             defaultCamPosition = transform.position + new Vector3(0, 1.5f, 0.5f);
-            chargeDirection = cam.transform.forward;
-            chargeDirection.y = 0;
+            chargeDirection = cameraHolder.transform.forward;
             chargeDirection = chargeDirection.normalized;
 
             if (currentAttackChargeTime >= attackChargeTimeMax)
@@ -80,7 +80,7 @@ public class FPPlayer : MonoBehaviour
                 inDash = true;
             }
 
-            cam.transform.rotation = Quaternion.Euler(new Vector3(0.01f, cam.transform.rotation.y, cam.transform.rotation.z));
+            //cam.transform.rotation = Quaternion.Euler(new Vector3(0.01f, cam.transform.rotation.y, cam.transform.rotation.z));
         }
         else if(currentAttackChargeTime > 0)
         {
@@ -102,8 +102,8 @@ public class FPPlayer : MonoBehaviour
     void Movement()
     {
         Vector3 moveVector = new Vector3(0, rig.linearVelocity.y, 0);
-        moveVector += walkVector.x * transform.right;
-        moveVector += walkVector.y * transform.forward;
+        moveVector += walkVector.x * cameraHolder.transform.right;
+        moveVector += walkVector.y * cameraHolder.transform.forward;
         moveVector = moveVector.normalized * currentWalkSpeed * Time.fixedDeltaTime;
 
         rig.linearVelocity = moveVector;
@@ -115,14 +115,14 @@ public class FPPlayer : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f);
 
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.Rotate(Vector3.up * mouseVector.x);
+        cameraHolder.transform.Rotate(Vector3.up * mouseVector.x);
     }
 
     void FlyForward()
     {
         if(flyForward)
         {
-            rig.AddForce(chargeDirection * chargePower, ForceMode.Impulse);
+            rig.linearVelocity = chargeDirection * chargePower * Time.fixedDeltaTime;
 
             flyForward = false;
             charging = false;
