@@ -231,7 +231,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5620145651478001719}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7492e7ba8f94794aab2edc32d5e8beea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -304,17 +304,15 @@ MonoBehaviour:
   defaultCamPosition: {x: 0, y: 0, z: 0}
   camDashStartPosition: {x: 0, y: 0, z: 0}
   cameraHolder: {fileID: 7983555810416343186}
-  chargePower: 4000
-  attackChargeTimeMax: 2
-  cameraChargeFlybackTime: 0.6
-  currentCameraChargeFlybackTime: 0
-  cameraChargeMove: 5
-  inDash: 0
-  charging: 0
-  flyForward: 0
   moveInput: {fileID: 6485160813341195449, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
   mouseInput: {fileID: 4501296380035403179, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
   leftClick: {fileID: 155363549396177350, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
+  maxChargeTime: 0
+  maxDashTime: 0
+  maxChargePower: 120
+  isDashing: 0
+  camDefaultFOV: 0
+  camMAXFOV: 0
 --- !u!54 &3127406634091972070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -325,7 +323,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -337,7 +335,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 116
