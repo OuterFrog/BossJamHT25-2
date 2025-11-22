@@ -54,7 +54,10 @@ public class movmentScript : MonoBehaviour
     }
 
 
-
+    public void StopMoving()
+    {
+        agent.isStopped = true;
+    }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
@@ -75,6 +78,7 @@ public class movmentScript : MonoBehaviour
 
     public void kill()
     {
+        StopMoving();
         GameManager.singleton.EnemyIsKilled();
         anim.SetTrigger("dead");
         GetComponent<BoxCollider>().enabled = false;
