@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject fpPlayerPrefab;
 
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] Animation bloodAnim;
 
     bool killingMode = false;
 
@@ -157,6 +158,8 @@ public class GameManager : MonoBehaviour
     public void EnemyIsKilled()
     {
         Debug.Log("One less enemy, epic!");
+
+        bloodAnim.Play("BloodAnim");
 
         enemyCount--;
 

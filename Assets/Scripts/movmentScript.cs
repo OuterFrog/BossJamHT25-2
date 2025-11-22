@@ -85,6 +85,8 @@ public class movmentScript : MonoBehaviour
         StopMoving();
 
         Invoke(nameof(DestroyEnemy), 2);
+
+        transform.GetChild(transform.childCount - 1).GetComponent<ParticleSystem>().Play();
     }
 
     void DestroyEnemy()
