@@ -200,5 +200,12 @@ public class EnemyVisionScript : MonoBehaviour
             return new ViewCastInfo(false, transform.position + dir *  viewRange,viewRange, globalAngle);
         }
     }
+
+
+    public void kill()
+    {
+
+       Destroy(gameObject);
+    }
     
  }
