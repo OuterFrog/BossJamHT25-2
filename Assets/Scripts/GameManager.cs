@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     GameObject playerObject;
     GameObject topDownCamera;
 
+    [SerializeField] Animation uiAnim;
+
     [SerializeField] GameObject fpPlayerPrefab;
 
     bool killingMode = false;
@@ -40,8 +42,16 @@ public class GameManager : MonoBehaviour
         GameObject oldPlayer = playerObject;
         playerObject = Instantiate(fpPlayerPrefab);
         fpPlayerPrefab.transform.position = oldPlayer.transform.position;
+
+        if(uiAnim)
+            uiAnim.Play("lnaanim");
         
         Destroy(oldPlayer);
         Destroy(topDownCamera);
+    }
+
+    public void EnemyCanSeeYou()
+    {
+        Debug.Log("You are dead");
     }
 }
