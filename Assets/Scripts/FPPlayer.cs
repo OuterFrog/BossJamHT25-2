@@ -139,9 +139,11 @@ public class FPPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+
         if(other.gameObject.layer == 7)
         {
-            GetComponent<EnemyVisionScript>().kill();
+            other.GetComponent<EnemyVisionScript>().kill();
         }
     }
 }
