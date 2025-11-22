@@ -10,7 +10,7 @@ public class TopDownCamera : MonoBehaviour
 
     void Start()
     {
-        
+        transform.position = GetTargetPos();
     }
 
     void Update()
@@ -23,7 +23,16 @@ public class TopDownCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 targetPos = new Vector3(target.position.x, 0, target.position.z) + offset;
-        transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+        InterpolatePos();
+    }
+
+    Vector3 GetTargetPos()
+    {
+        return new Vector3(target.position.x, 0, target.position.z) + offset;
+    }
+
+    void InterpolatePos()
+    {
+        transform.position = Vector3.Lerp(transform.position, GetTargetPos(), speed * Time.deltaTime);
     }
 }
