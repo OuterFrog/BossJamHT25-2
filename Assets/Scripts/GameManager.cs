@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
     
     bool hasWon = false;
 
+    [SerializeField] GameObject musicInThisScene;
+    static GameObject musicPlayer;
+
     public GameObject GetPlayerObj()
     {
         return playerObject;
@@ -56,6 +59,16 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         singleton = this;
+
+        if (musicPlayer)
+        {
+            Destroy(musicInThisScene);
+        }
+        else
+        {
+            musicPlayer = musicInThisScene;
+            DontDestroyOnLoad(musicPlayer);
+        }
 
         if(!playerObject)
         {
