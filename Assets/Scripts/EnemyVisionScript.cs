@@ -56,17 +56,27 @@ public class EnemyVisionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DrawFieldOfView();
-        //Debug.DrawLine(transform.position, dirFromAngle(transform.eulerAngles.y + 30) *5 + transform.position, Color.yellow);
 
-        if (GameManager.singleton == null)
-        {
-            Debug.Log("no gamemanager ref found");
+        if(GameManager.singleton.GetMode() == false) {
+
+
+            DrawFieldOfView();
+            //Debug.DrawLine(transform.position, dirFromAngle(transform.eulerAngles.y + 30) *5 + transform.position, Color.yellow);
+
+            if (GameManager.singleton == null)
+            {
+                Debug.Log("no gamemanager ref found");
+            }
+            if (GameManager.singleton.GetPlayerObj() != null)
+            {
+                lookFor(GameManager.singleton.GetPlayerObj());
+            }
+            //else Debug.Log("no playerref");
+
+
         }
-        if (GameManager.singleton.GetPlayerObj() != null) {
-            lookFor(GameManager.singleton.GetPlayerObj());
-        }
-        //else Debug.Log("no playerref");
+
+
     }
 
 
