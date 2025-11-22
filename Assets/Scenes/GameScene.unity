@@ -251,9 +251,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 623341058}
     - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
+      propertyPath: startTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
       propertyPath: timerText
       value: 
       objectReference: {fileID: 24886188}
+    - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
+      propertyPath: enemyCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
       propertyPath: fullGameLoop
       value: 1
@@ -1248,7 +1256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4317629663735661256, guid: 55a7250f79f56814ea0961aefca65f8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.6
+      value: -33.26
       objectReference: {fileID: 0}
     - target: {fileID: 4317629663735661256, guid: 55a7250f79f56814ea0961aefca65f8b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1256,7 +1264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4317629663735661256, guid: 55a7250f79f56814ea0961aefca65f8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.36
+      value: 13.01
       objectReference: {fileID: 0}
     - target: {fileID: 4317629663735661256, guid: 55a7250f79f56814ea0961aefca65f8b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1285,6 +1293,10 @@ PrefabInstance:
     - target: {fileID: 4317629663735661256, guid: 55a7250f79f56814ea0961aefca65f8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7160505772732686994, guid: 55a7250f79f56814ea0961aefca65f8b, type: 3}
+      propertyPath: patrolRange
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7160505772732686994, guid: 55a7250f79f56814ea0961aefca65f8b, type: 3}
       propertyPath: setMaxXAxis

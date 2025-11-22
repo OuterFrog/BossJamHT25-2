@@ -2,17 +2,26 @@ using UnityEngine;
 using TMPro;
 using System.Threading;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
-{
+{  
+    // General
     public static GameManager singleton;
-
+    
     [SerializeField] bool fullGameLoop = false;
 
     GameObject playerObject;
-    GameObject topDownCamera;
 
     [SerializeField] Animation uiAnim;
+
+    float gameTimer = 0;
+    float killModeTimer = 0;
+
+    // Top down stuff
+    GameObject topDownCamera;
+
+    // FP stuff
 
     [SerializeField] GameObject fpPlayerPrefab;
 
@@ -26,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int enemyCount;
     int enemiesLeft;
+    
+    bool hasWon = false;
 
     public GameObject GetPlayerObj()
     {
@@ -41,15 +52,17 @@ public class GameManager : MonoBehaviour
     {
         singleton = this;
 
-        if(playerObject)
+        if(!playerObject)
         {
             playerObject = FindFirstObjectByType<TopDownPlayer>().gameObject;
         }
 
-        if(topDownCamera)
+        if(!topDownCamera)
         {
             topDownCamera = FindFirstObjectByType<TopDownCamera>().gameObject;
         }
+
+        enemyCount = FindObjectsByType<movmentScript>(FindObjectsSortMode.None).Count();
     }
 
     void Start()
@@ -57,7 +70,7 @@ public class GameManager : MonoBehaviour
         enemiesLeft = enemyCount;
 
         if(timerText)
-            timerText.enabled = false;   
+            timerText.enabled = false;
 
     }
 
@@ -68,8 +81,9 @@ public class GameManager : MonoBehaviour
         killingMode = true;
 
         GameObject oldPlayer = playerObject;
+        Debug.Log(oldPlayer);
         playerObject = Instantiate(fpPlayerPrefab);
-        fpPlayerPrefab.transform.position = oldPlayer.transform.position;
+        playerObject.transform.position = oldPlayer.transform.position;
 
         if(uiAnim)
             uiAnim.Play("lnaanim");
@@ -99,6 +113,7 @@ public class GameManager : MonoBehaviour
         if(enemyCount <= 0)
         {
             Debug.Log("You win!");
+            hasWon = true;
         }
     }
 
@@ -113,9 +128,15 @@ public class GameManager : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+        if(!hasWon)
+            gameTimer += Time.deltaTime;
+
         if (timerOn)
-        {
+        {   
+            if(!hasWon)
+                killModeTimer += Time.deltaTime;
+
             timeLeft -= Time.deltaTime;
             timeLeft = Mathf.Clamp(timeLeft, 0, startTime);
 

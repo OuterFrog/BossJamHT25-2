@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1179666547764047370}
   - component: {fileID: 80582858256558827}
   - component: {fileID: 3011362742773508664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522626518827829361}
   - component: {fileID: 794804352974002272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RotatingObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2354454982276103006}
   - component: {fileID: 6952232560008688674}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 1360540040574516795}
   - component: {fileID: 7082426216634045280}
   - component: {fileID: 4054025175376619839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Pickup
   m_Icon: {fileID: 0}

@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437ae0b7f8470e74fb69f9de305039d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAnagleFOV: 90
+  viewAnagleFOV: 75
   viewRange: 10
   meshResolution: 50
   rayCastOrigin: {fileID: 3671003794613626265}
