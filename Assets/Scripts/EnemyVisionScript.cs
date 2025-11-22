@@ -45,7 +45,7 @@ public class EnemyVisionScript : MonoBehaviour
     }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+    void Start()
     {
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
@@ -73,20 +73,24 @@ public class EnemyVisionScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        Vector3 direction = player.transform.forward - transform.forward;
+        Vector3 direction = player.transform.position - transform.position;
 
         Debug.DrawRay(transform.position, direction, Color.red);
 
-        if(Vector3.Magnitude(direction) < viewRange && Physics.Raycast( transform.position, direction, out hit, viewRange))
+        //Debug.Log(Vector3.Dot(direction.normalized, transform.forward.normalized));
+
+        if (Vector3.Magnitude(direction) < viewRange && Physics.Raycast( transform.position, direction, out hit, viewRange))
         {
-            if (Vector3.Dot(direction, transform.forward) < viewAnagleFOV / 180 || Vector3.Dot(direction, transform.forward) > -1 * viewAnagleFOV / 180) {
+            if (Vector3.Dot(direction.normalized, transform.forward.normalized) > viewAnagleFOV / 180)
+            {
 
                 Debug.Log("i can see you");
 
             }
+            else { Debug.Log("Line of sight"); }
             
         }
-        
+        else { Debug.Log("i can t see you"); }
     }
 
 
