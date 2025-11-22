@@ -54,4 +54,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("You are dead");
     }
+
+    public void EnemyIsKilled()
+    {
+        Debug.Log("One less enemy, epic!");
+    }
 }
