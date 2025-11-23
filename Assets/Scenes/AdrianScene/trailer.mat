@@ -59,7 +59,7 @@ Material:
     - _QueueOffset: 0
     - _dissolvescale: 30
     m_Colors:
-    - _Color01: {r: 0.9622642, g: 0.013616921, b: 0.013616921, a: 0}
+    - _Color01: {r: 0.36462992, g: 0.0051598484, b: 0.0051598484, a: 0}
     - _Color02: {r: 0.2924528, g: 0.23763508, b: 0.056559265, a: 0}
     - _dissolvespeed: {r: 1, g: 0, b: 0, a: 0}
     - _maintexSpeed: {r: -0.2, g: 0, b: 0, a: 0}
