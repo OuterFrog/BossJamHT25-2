@@ -361,7 +361,7 @@ MonoBehaviour:
   moveInput: {fileID: 6485160813341195449, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
   mouseInput: {fileID: 4501296380035403179, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
   leftClick: {fileID: 155363549396177350, guid: d3dfa36dec2e0ab34acb380d736f12d7, type: 3}
-  maxChargeTime: 1
+  maxChargeTime: 0.7
   maxDashTime: 1.3
   zoomBackTime: 0.4
   maxChargePower: 120
