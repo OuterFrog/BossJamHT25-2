@@ -158,6 +158,8 @@ public class GameManager : MonoBehaviour
 
         if (fullGameLoop)
         {
+            musicPlayer.GetComponent<AudioSource>().Stop();
+
             restartButton.gameObject.SetActive(true);
             menuButton.gameObject.SetActive(true);
             if (playerObject.GetComponent<TopDownPlayer>())
