@@ -19,6 +19,8 @@ public class TopDownPlayer : MonoBehaviour
 
     float animWalkSpeed = 0;
 
+    [SerializeField] AudioSource footstepSound;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -64,6 +66,18 @@ public class TopDownPlayer : MonoBehaviour
             Vector2 dir = new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).normalized;
             float rot = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
             targetRot = Quaternion.Euler(0,rot,0);
+
+            if (!footstepSound.isPlaying)
+            {
+                footstepSound.Play();
+            }
+        }
+        else
+        {
+            if (footstepSound.isPlaying)
+            {
+                footstepSound.Stop();
+            }
         }
     }
 
