@@ -8,7 +8,7 @@ public class SoundPlayer : MonoBehaviour
         src.clip = clip;
         src.volume = volume;
         src.Play();
-        Invoke(nameof(DestroySelf), 2);
+        Invoke(nameof(DestroySelf), clip.length + 0.5f);
     }
 
     void DestroySelf()
