@@ -7,24 +7,26 @@ public class SettingsScript : MonoBehaviour
 
     public float mouseSensitivity;
 
-    [SerializeField] Slider senseSlider;
 
     void Awake()
     {
+
         if(singleton == null)
         {
             singleton = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
             Destroy(this);
         }
 
-        senseSlider.value = mouseSensitivity;
+        FindAnyObjectByType<Slider>().value = mouseSensitivity;
     }
 
-    public void ChangedSense()
+    void Update()
     {
-        mouseSensitivity = senseSlider.value;
+        mouseSensitivity = FindAnyObjectByType<Slider>().value;
+                Debug.Log("new " + mouseSensitivity);
     }
 }
