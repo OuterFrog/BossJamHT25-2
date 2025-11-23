@@ -11,8 +11,9 @@ public class movmentScript : MonoBehaviour
     public Transform playArea;
     public bool UseStartPosAsPatrolArea;
     public Vector3 patrolArea;
+    public bool useBallForRange;
     public float patrolRange;
-
+    public Transform patrolRangeIndicator;
     public float closeEnoughTolerance;
 
     Vector3 moveTo;
@@ -31,7 +32,14 @@ public class movmentScript : MonoBehaviour
         {
             patrolArea = moveTo;
         }
-        
+
+        if (useBallForRange)
+        {
+            patrolRange = patrolRangeIndicator.transform.localScale.x;
+        }
+
+        Destroy(patrolRangeIndicator);
+
         anim.Play("WalkBlend");
 
     }
