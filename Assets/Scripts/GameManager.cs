@@ -171,7 +171,6 @@ public class GameManager : MonoBehaviour
                 enemy.StopMoving();
             }
 
-            SFXManager.singleton.PlaySound(15);
             SFXManager.singleton.PlaySound(14);
             //Time.timeScale = 0;
 

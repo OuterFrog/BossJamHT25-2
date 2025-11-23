@@ -177,6 +177,7 @@ public class FPPlayer : MonoBehaviour
         if(other.gameObject.layer == 7)
         {
             SFXManager.singleton.PlayOneOf(5,6,7,8,9,10,11);
+            SFXManager.singleton.PlaySound(12);
             other.GetComponent<movmentScript>().kill();
         }
     }

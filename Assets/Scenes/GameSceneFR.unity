@@ -5595,6 +5595,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 792616768}
     - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
+      propertyPath: doomMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 15df9b59c1f58e6f88dbabf0cf3d89ce, type: 3}
+    - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
       propertyPath: startTime
       value: 30
       objectReference: {fileID: 0}
@@ -5602,6 +5606,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1219623192}
+    - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
+      propertyPath: chillMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: a27f94f7b4ea5ae8abe9cd42bd28266b, type: 3}
     - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
       propertyPath: fullGameLoop
       value: 1
