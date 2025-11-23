@@ -2585,70 +2585,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUp
       objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[0].x
-      value: 48.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[0].y
-      value: 0.591
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[0].z
-      value: -16
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[1].x
-      value: 25.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[1].y
-      value: 0.591
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[1].z
-      value: 5.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[2].x
-      value: 37.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[2].y
-      value: 0.591
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[2].z
-      value: -27
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[3].x
-      value: 17.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[3].y
-      value: 0.591
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[3].z
-      value: 6.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[4].x
-      value: 16.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[4].y
-      value: 0.591
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952232560008688674, guid: eee2343725c31b010af553a8caeec517, type: 3}
-      propertyPath: SpawnPos.Array.data[4].z
-      value: -29.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2782,6 +2718,17 @@ Animation:
   m_CorrespondingSourceObject: {fileID: 7129892950343156941, guid: fac3db7ca6f3f573392a971f2f87f05a, type: 3}
   m_PrefabInstance: {fileID: 792616767}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &792616769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7748032059121188720, guid: fac3db7ca6f3f573392a971f2f87f05a, type: 3}
+  m_PrefabInstance: {fileID: 792616767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &811943059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5068182344189577312, guid: 3ae66c64e989d884db0495a230d419dd, type: 3}
@@ -6034,6 +5981,10 @@ PrefabInstance:
       propertyPath: chillMusic
       value: 
       objectReference: {fileID: 8300000, guid: a27f94f7b4ea5ae8abe9cd42bd28266b, type: 3}
+    - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
+      propertyPath: menuButton
+      value: 
+      objectReference: {fileID: 792616769}
     - target: {fileID: 1207288733326249188, guid: f4f21d212f54d2544b2f7896780c6ba8, type: 3}
       propertyPath: fullGameLoop
       value: 1

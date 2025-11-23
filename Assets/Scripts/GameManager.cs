@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public bool dead = false;
 
     [SerializeField] Button restartButton;
+    [SerializeField] Button menuButton;
 
     // Top down stuff
     GameObject topDownCamera;
@@ -105,6 +106,9 @@ public class GameManager : MonoBehaviour
         if(restartButton)
             restartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
 
+        if(menuButton)
+            menuButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1));
+
         if (spawnInFirstPerson)
         {
             FindFirstObjectByType<PickUpScript>().PickedUp();
@@ -155,6 +159,7 @@ public class GameManager : MonoBehaviour
         if (fullGameLoop)
         {
             restartButton.gameObject.SetActive(true);
+            menuButton.gameObject.SetActive(true);
             if (playerObject.GetComponent<TopDownPlayer>())
             {
                 playerObject.GetComponent<TopDownPlayer>().Die();
