@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             if(src.clip != chillMusic)
             {
                 src.clip = chillMusic;
-                src.Play();
+                // src.Play();
             }
         }
         else
@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
             musicPlayer = musicInThisScene;
             DontDestroyOnLoad(musicPlayer);
         }
+
+        musicPlayer.GetComponent<AudioSource>().Play();
 
         if(!playerObject)
         {
