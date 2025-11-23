@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("You win!");
             hasWon = true;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
