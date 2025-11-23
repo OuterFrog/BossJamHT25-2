@@ -5188,7 +5188,7 @@ MonoBehaviour:
   patrolArea: {x: 0, y: 0, z: 0}
   useBallForRange: 0
   patrolRange: 0
-  patrolRangeIndicator: {fileID: 0}
+  patrolRangeIndicator: {fileID: 1989303760094705078}
   closeEnoughTolerance: 1
   enemy: {fileID: 4317629663735661256}
   anim: {fileID: 6832205572652925026}
