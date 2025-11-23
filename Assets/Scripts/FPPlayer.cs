@@ -165,6 +165,7 @@ public class FPPlayer : MonoBehaviour
 
     void FlyForward()
     {
+        SFXManager.singleton.PlayOneOf(1,2,3);
         rig.AddForce(chargeDirection * currentChargePower * 100);
         Debug.Log("ATTACKED!");
     }
@@ -175,6 +176,7 @@ public class FPPlayer : MonoBehaviour
 
         if(other.gameObject.layer == 7)
         {
+            SFXManager.singleton.PlayOneOf(5,6,7,8,9,10,11);
             other.GetComponent<movmentScript>().kill();
         }
     }

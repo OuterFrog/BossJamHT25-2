@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    public void PlaySound(AudioSource source, AudioClip clip)
+    public void PlaySound(AudioClip clip)
     {
-        source.clip = clip;
-        source.Play();
+        AudioSource src = GetComponent<AudioSource>();
+        src.clip = clip;
+        src.Play();
+        Invoke(nameof(DestroySelf), 2);
+    }
+
+    void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

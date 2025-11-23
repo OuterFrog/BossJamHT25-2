@@ -114,6 +114,8 @@ public class GameManager : MonoBehaviour
         playerObject = Instantiate(fpPlayerPrefab);
         playerObject.transform.position = oldPlayer.transform.position;
 
+        SFXManager.singleton.PlaySound(4);
+
         if(uiAnim)
             uiAnim.Play("lnaanim");
 
@@ -149,6 +151,9 @@ public class GameManager : MonoBehaviour
             {
                 enemy.StopMoving();
             }
+
+            SFXManager.singleton.PlaySound(15);
+            SFXManager.singleton.PlaySound(14);
             //Time.timeScale = 0;
 
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
