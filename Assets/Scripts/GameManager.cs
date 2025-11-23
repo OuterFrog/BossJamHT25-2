@@ -194,6 +194,7 @@ public class GameManager : MonoBehaviour
         if(enemyCount <= 0)
         {
             Debug.Log("You win!");
+            musicPlayer.GetComponent<AudioSource>().Stop();
             hasWon = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
