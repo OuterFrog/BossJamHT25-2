@@ -2089,7 +2089,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 653566634}
         m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
-        m_MethodName: ChangedSense
+        m_MethodName: ChangeSense
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

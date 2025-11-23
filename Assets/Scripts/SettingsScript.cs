@@ -7,6 +7,8 @@ public class SettingsScript : MonoBehaviour
 
     public float mouseSensitivity;
 
+    public Slider senseSlider;
+
 
     void Awake()
     {
@@ -18,15 +20,18 @@ public class SettingsScript : MonoBehaviour
         }
         else
         {
+            senseSlider.value = singleton.mouseSensitivity;
+            senseSlider.onValueChanged.AddListener((value) => singleton.ChangeSense());
+            singleton.senseSlider = senseSlider;
             Destroy(this);
         }
 
-        FindAnyObjectByType<Slider>().value = mouseSensitivity;
+        senseSlider.value = mouseSensitivity;
     }
 
-    void Update()
+    public void ChangeSense()
     {
-        mouseSensitivity = FindAnyObjectByType<Slider>().value;
-                Debug.Log("new " + mouseSensitivity);
+        mouseSensitivity = senseSlider.value;
+        Debug.Log("new " + mouseSensitivity);
     }
 }
