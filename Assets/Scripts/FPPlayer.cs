@@ -43,6 +43,11 @@ public class FPPlayer : MonoBehaviour
 
     public Collider playerColider;
 
+    bool isPlayingChargeUp;
+    public AudioSource soundSource;
+    public AudioClip[] chargeSounds;
+    public AudioClip chargeUp;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,6 +63,7 @@ public class FPPlayer : MonoBehaviour
 
         attackCollider.SetActive(false);
         isZoomingBack = false;
+        isPlayingChargeUp = false;
     }
 
     // Update is called once per frame
