@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject musicInThisScene;
     static GameObject musicPlayer;
+    [SerializeField] AudioClip chillMusic;
+    [SerializeField] AudioClip doomMusic;
 
     [SerializeField] bool spawnInFirstPerson = false;
 
@@ -66,6 +68,13 @@ public class GameManager : MonoBehaviour
         if (musicPlayer)
         {
             Destroy(musicInThisScene);
+
+            AudioSource src = musicPlayer.GetComponent<AudioSource>();
+            if(src.clip != chillMusic)
+            {
+                src.clip = chillMusic;
+                src.Play();
+            }
         }
         else
         {
@@ -114,6 +123,8 @@ public class GameManager : MonoBehaviour
         playerObject = Instantiate(fpPlayerPrefab);
         playerObject.transform.position = oldPlayer.transform.position;
 
+        musicPlayer.GetComponent<AudioSource>().Stop();
+
         SFXManager.singleton.PlaySound(4);
 
         if(uiAnim)
@@ -123,6 +134,14 @@ public class GameManager : MonoBehaviour
         
         Destroy(oldPlayer);
         Destroy(topDownCamera);
+
+        Invoke(nameof(PlayDoomMusic), 2);
+    }
+
+    void PlayDoomMusic()
+    {
+        musicPlayer.GetComponent<AudioSource>().clip = doomMusic;
+        musicPlayer.GetComponent<AudioSource>().Play();
     }
 
     public void EnemyCanSeeYou()

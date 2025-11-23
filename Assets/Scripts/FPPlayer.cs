@@ -165,7 +165,7 @@ public class FPPlayer : MonoBehaviour
 
     void FlyForward()
     {
-        SFXManager.singleton.PlayOneOf(1,2,3);
+        SFXManager.singleton.PlayOneOf(0.5f,1,2,3);
         rig.AddForce(chargeDirection * currentChargePower * 100);
         Debug.Log("ATTACKED!");
     }
