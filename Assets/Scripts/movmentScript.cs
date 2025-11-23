@@ -38,8 +38,8 @@ public class movmentScript : MonoBehaviour
             patrolRange = patrolRangeIndicator.transform.localScale.x;
         }
 
-        Destroy(patrolRangeIndicator);
-
+        Destroy(patrolRangeIndicator.gameObject);
+        
         anim.Play("WalkBlend");
 
     }
